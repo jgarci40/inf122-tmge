@@ -1,17 +1,32 @@
 package com.TMGE;
 
 public class Tile {
-    private Tile tilePiece;
+    private int row;
+    private int col;
+    private TilePiece occupied = null;
 
-    public Tile() {
-        this.tilePiece = null;
+    public Tile(int r, int c) {
+        row = r;
+        col = c;
     }
 
-    public Tile getTilePiece() {
-        return tilePiece;
+    public int getRow() {
+        return row;
     }
 
-    public void setTilePiece(Tile tilePiece) {
-        this.tilePiece = tilePiece;
+    public int getCol() {
+        return col;
+    }
+
+    public void setRow(int r) {
+        row = r;
+    }
+
+    public void setCol(int c) {
+        col = c;
+    }
+
+    public TilePiece getOccupied() {
+        return occupied;
     }
 }
