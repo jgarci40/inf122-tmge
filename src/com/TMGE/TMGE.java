@@ -51,4 +51,16 @@ public class TMGE {
             System.out.println();
         }
     }
+
+    public static ArrayList<ArrayList<Tile>> createBoard(int rows, int columns){
+        ArrayList<ArrayList<Tile>> temp = new ArrayList<>();
+        for (int i = 0; i < rows; i++) {
+            temp.add(new ArrayList<>());
+            for (int j = 0; j < columns; j++) {
+                Tile t = new Tile(i, j);
+                temp.get(i).add(t);
+            }
+        }
+        return temp;
+    }
 }
