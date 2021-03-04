@@ -7,7 +7,11 @@ public class TMGE {
     private String gameType;
     private PlayerManager playerManager;
 
-
+    public TMGE() {
+        gameBoard = new ArrayList<ArrayList<Tile>>();
+        gameType = "";
+        playerManager = new PlayerManager();
+    }
 
     public TMGE(ArrayList<ArrayList<Tile>> gameBoard, String gameType, PlayerManager playerManager) {
         this.gameBoard = gameBoard;
@@ -29,5 +33,22 @@ public class TMGE {
 
     public void setGameBoard(ArrayList<ArrayList<Tile>> gameBoard) {
         this.gameBoard = gameBoard;
+    }
+
+    public void setGameType(String g) {
+        gameType = g;
+    }
+
+    public void printBoard() {
+        for (ArrayList<Tile> g : gameBoard) {
+            for (int i = 0; i < g.size(); i++) {
+                if (g.get(i).getOccupied() == null) {
+                    System.out.print(" * ");
+                } else {
+                    System.out.print(g.get(i).getOccupied().getPieceType());
+                }
+            }
+            System.out.println();
+        }
     }
 }
