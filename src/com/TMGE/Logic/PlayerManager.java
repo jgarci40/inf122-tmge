@@ -1,4 +1,4 @@
-package com.TMGE;
+package com.TMGE.Logic;
 
 import java.util.ArrayList;
 
@@ -10,9 +10,6 @@ public class PlayerManager {
         this.players = new ArrayList<>();
         this.playerTurnIndex = -1;
     }
-
-    // Copy Constructor
-
 
     public PlayerManager(ArrayList<Player> players, int playerTurnIndex) {
         this.players = players;
@@ -77,5 +74,9 @@ public class PlayerManager {
         for (Player p : players) {
             System.out.println(p.getName() + ": " + Integer.toString(p.getPoints()));
         }
+    }
+
+    public void shiftTurns(){
+        playerTurnIndex = (playerTurnIndex + 1) % this.players.size();
     }
 }
