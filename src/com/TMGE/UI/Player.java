@@ -1,6 +1,6 @@
 package com.TMGE.UI;
 
-import com.TMGE.PlayerManager;
+import com.TMGE.Logic.PlayerManager;
 
 import java.util.Scanner;
 

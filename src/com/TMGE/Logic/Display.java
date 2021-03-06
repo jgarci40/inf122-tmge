@@ -1,4 +1,4 @@
-package com.TMGE;
+package com.TMGE.Logic;
 
 public class Display {
     public Display() {
