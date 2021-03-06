@@ -1,7 +1,7 @@
 package com.TMGE.UI;
 
-import com.TMGE.PlayerManager;
-import com.TMGE.TMGE;
+import com.TMGE.Logic.PlayerManager;
+
 import java.util.Scanner;
 
 public class Menu {

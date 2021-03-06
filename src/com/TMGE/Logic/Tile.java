@@ -1,4 +1,4 @@
-package com.TMGE;
+package com.TMGE.Logic;
 
 public class Tile {
     private int row;
@@ -24,6 +24,10 @@ public class Tile {
 
     public void setCol(int c) {
         col = c;
+    }
+
+    public void setOccupied(TilePiece occupied) {
+        this.occupied = occupied;
     }
 
     public TilePiece getOccupied() {

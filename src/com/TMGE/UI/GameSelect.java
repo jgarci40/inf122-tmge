@@ -1,7 +1,7 @@
 package com.TMGE.UI;
 
-import com.TMGE.PlayerManager;
-import com.TMGE.TMGE;
+import com.TMGE.Games.Bejeweled.Bejeweled;
+import com.TMGE.Logic.PlayerManager;
 
 import java.util.Scanner;
 
@@ -19,9 +19,10 @@ public class GameSelect {
 
             switch(gameOption){
                 case 0:
+                    shouldStop = true;
                     return;
                 case 1:
-                    // Start Game here
+                    Bejeweled.start();
                     break;
                 case 2:
                     // Start Game here
@@ -34,7 +35,7 @@ public class GameSelect {
     public static void printGameOptions(){
         System.out.println("Game Options:");
         System.out.println("\t0: exit");
-        System.out.println("\t1: x");
+        System.out.println("\t1: Bejeweled");
         System.out.println("\t2: y");
     }
 }

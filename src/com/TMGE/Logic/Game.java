@@ -1,6 +1,4 @@
-package com.TMGE;
-
-import java.util.ArrayList;
+package com.TMGE.Logic;
 
 public interface Game {
     // public final ArrayList<ArrayList<Tile>> gameBoard = new
