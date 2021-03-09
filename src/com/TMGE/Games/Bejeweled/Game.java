@@ -26,6 +26,7 @@ public class Game extends TMGE {
         this.tilePieceTypes.add("+");
         this.tilePieceTypes.add("#");
         this.tilePieceTypes.add("@");
+        this.tilePieceTypes.add("$");
     }
 
     public int getMaxPoints() {
@@ -41,7 +42,32 @@ public class Game extends TMGE {
             for(int row = 0; row < this.getGameBoard().size(); ++row){
                 for(int col = 0; col < this.getGameBoard().get(row).size(); ++col){
                     int pieceIndex = (int)(Math.random() * this.tilePieceTypes.size());
+                    // piece type needs to be different from left and upper
                     String tileType = this.tilePieceTypes.get(pieceIndex);
+                    if (row != 0 && col != 0) { // if tile has a left and above tile
+                        Tile above  = this.getGameBoard().get(row-1).get(col);
+                        Tile left   = this.getGameBoard().get(row).get(col-1);
+                        // while current tile type equals left or above, get a new type
+                        while (above.getOccupied().getPieceType().equals(tileType) || left.getOccupied().getPieceType().equals(tileType)) {
+                            pieceIndex = (int)(Math.random() * this.tilePieceTypes.size());
+                            tileType = this.tilePieceTypes.get(pieceIndex);
+                        }
+                    } else if (row == 0 && col != 0) {  // if first row but not first element
+                        Tile left   = this.getGameBoard().get(row).get(col-1);
+                        // while current tile type equals left, get a new type
+                        while (left.getOccupied().getPieceType().equals(tileType)) {
+                            pieceIndex = (int)(Math.random() * this.tilePieceTypes.size());
+                            tileType = this.tilePieceTypes.get(pieceIndex);
+                        }
+                    } else if (col == 0 && row != 0) {  // if first col but not first element
+                        Tile above  = this.getGameBoard().get(row-1).get(col);
+                        // while current tile type equals left, get a new type
+                        while (above.getOccupied().getPieceType().equals(tileType)) {
+                            pieceIndex = (int)(Math.random() * this.tilePieceTypes.size());
+                            tileType = this.tilePieceTypes.get(pieceIndex);
+                        }
+                    }
+                    // set the tile type
                     this.getGameBoard().get(row).get(col).setOccupied(new TilePiece(tileType));
                 }
             }
@@ -69,6 +95,7 @@ public class Game extends TMGE {
             Tile end            = null;
 
             for (int col = 0; col < this.COLUMNS; col++) {
+                // current tile can be null
                 Tile current_tile   = gameBoard.get(row).get(col);
                 String current_type = current_tile.getOccupied().getPieceType();
 
