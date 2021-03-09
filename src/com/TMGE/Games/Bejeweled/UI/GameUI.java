@@ -61,8 +61,8 @@ public class GameUI {
         while(!hasPlayerPlayed){
             fromRow = this.getValidRow("Enter From Row: ");
             fromCol = this.getValidColumn("Enter From Column: ");
-            toRow = this.getValidRow("Enter To Row");
-            toCol = this.getValidRow("Enter to Column");
+            toRow = this.getValidRow("Enter To Row: ");
+            toCol = this.getValidRow("Enter to Column: ");
 
             if(this.game.isValidMove(fromCol, fromRow, toCol, toRow)){
                 System.out.println("You made a move!");
@@ -71,8 +71,7 @@ public class GameUI {
                 System.out.println("Invalid move. Try again");
             }
         }
-        this.game.swapPieces(fromCol, fromRow, toCol,toRow);
-
+        this.game.swapPieces(fromCol, fromRow, toCol, toRow);
     }
 
     private int getValidRow(String text){
