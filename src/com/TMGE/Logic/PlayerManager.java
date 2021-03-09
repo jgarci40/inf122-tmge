@@ -8,7 +8,7 @@ public class PlayerManager {
 
     public PlayerManager() {
         this.players = new ArrayList<>();
-        this.playerTurnIndex = -1;
+        this.playerTurnIndex = 0;
     }
 
     public PlayerManager(ArrayList<Player> players, int playerTurnIndex) {
@@ -37,6 +37,7 @@ public class PlayerManager {
     }
 
     public void addPoints(int points, int playerIndex) {
+        System.out.println(playerIndex);
         int currentPoints = this.players.get(playerIndex).getPoints();
         this.players.get(playerIndex).setPoints(currentPoints + points);
     }
