@@ -7,7 +7,6 @@ import com.TMGE.Logic.TilePiece;
 
 import java.text.Normalizer.Form;
 import java.util.ArrayList;
-
 public class Game extends TMGE {
     private int maxPoints;
     private ArrayList<String> tilePieceTypes;
@@ -256,7 +255,34 @@ public class Game extends TMGE {
     }
 
     public void shiftPiecesDown(){
-        // TODO: Shift all pieces down
+        // TODO: needs to be tested
+//        for(int col = 0; col < COLUMNS; ++col){
+//
+//            // Create Arraylist with current column
+//            ArrayList<Tile> tiles = new ArrayList<>();
+//            for(int row = 0; row < ROWS; ++row) {
+//                Tile t = this.getGameBoard().get(row).get(col);
+//                tiles.add(new Tile(t));
+//            }
+//
+//            // Remove all null items in the array
+//            for(int i = tiles.size(); i >= 0; --i){
+//                if(tiles.get(i).getOccupied() == null){
+//                    tiles.remove(i);
+//                }
+//            }
+//
+//            ArrayList<ArrayList<Tile>> tmpGameBoard = this.getGameBoard();
+//            int tileIndex = tiles.size() -1;
+//            // Map back
+//            for(int row = ROWS - 1; row >= 0; --row){
+//                if(tileIndex > 0){
+//                    tmpGameBoard.get(row).get(col).setOccupied(new TilePiece(tiles.get(tileIndex--).getOccupied().getPieceType()));
+//                } else{
+//                    tmpGameBoard.get(row).get(col).setOccupied(null);
+//                }
+//            }
+//        }
     }
 
     public void fillEmptyPieces(){

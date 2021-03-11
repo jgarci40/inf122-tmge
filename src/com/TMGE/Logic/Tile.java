@@ -1,5 +1,6 @@
 package com.TMGE.Logic;
 
+
 public class Tile {
     private int row;
     private int col;
@@ -8,6 +9,13 @@ public class Tile {
     public Tile(int r, int c) {
         row = r;
         col = c;
+    }
+
+    // Copy Constructor
+    public Tile(Tile t){
+        this.row = t.getRow();
+        this.col = t.getCol();
+        this.occupied = t.getOccupied() != null ? new TilePiece(t.getOccupied().getPieceType()) : null ;
     }
 
     public int getRow() {
