@@ -1,9 +1,6 @@
 package com.TMGE.Games.Bejeweled;
 
-import com.TMGE.Logic.PlayerManager;
-import com.TMGE.Logic.TMGE;
-import com.TMGE.Logic.Tile;
-import com.TMGE.Logic.TilePiece;
+import com.TMGE.Logic.*;
 
 import java.text.Normalizer.Form;
 import java.util.ArrayList;
@@ -157,6 +154,11 @@ public class Game extends TMGE {
     public boolean hasPlayerWon (){
         // TODO: check players points to see if they have reached or exceded the goal
         boolean hasPlayerWon = false;
+        for (Player p : this.getPlayerManager().getPlayers()) {
+            if(p.getPoints() >= this.maxPoints){
+                hasPlayerWon = true;
+            }
+        }
         return hasPlayerWon;
     }
 
