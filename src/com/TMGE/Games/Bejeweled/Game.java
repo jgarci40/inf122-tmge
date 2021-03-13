@@ -1,13 +1,9 @@
 package com.TMGE.Games.Bejeweled;
 
-import com.TMGE.Logic.PlayerManager;
-import com.TMGE.Logic.TMGE;
-import com.TMGE.Logic.Tile;
-import com.TMGE.Logic.TilePiece;
+import com.TMGE.Logic.*;
 
 import java.text.Normalizer.Form;
 import java.util.ArrayList;
-
 public class Game extends TMGE {
     private int maxPoints;
     private ArrayList<String> tilePieceTypes;
@@ -158,6 +154,11 @@ public class Game extends TMGE {
     public boolean hasPlayerWon (){
         // TODO: check players points to see if they have reached or exceded the goal
         boolean hasPlayerWon = false;
+        for (Player p : this.getPlayerManager().getPlayers()) {
+            if(p.getPoints() >= this.maxPoints){
+                hasPlayerWon = true;
+            }
+        }
         return hasPlayerWon;
     }
 
@@ -207,17 +208,15 @@ public class Game extends TMGE {
     }
 
     public void swapPieces(int fromCol, int fromRow, int toCol, int toRow){
-        // TODO: Swap pieces if it will cause a destroy
         // swap by changing Tile coordinates
+
         Tile fromTile   = this.getGameBoard().get(fromRow).get(fromCol);
         Tile toTile     = this.getGameBoard().get(toRow).get(toCol);
-        // fromTile.setRow(toRow);
-        // fromTile.setCol(toCol);
-        // toTile.setRow(fromRow);
-        // toTile.setCol(fromCol);
+
         TilePiece temp = fromTile.getOccupied();
         fromTile.setOccupied(toTile.getOccupied());
         toTile.setOccupied(temp);
+
     }
 
     public int destroyHorizontalMatches(Tile beginning, Tile end) {
@@ -244,7 +243,7 @@ public class Game extends TMGE {
         // TODO: Destroy all matches that are 3 or more
         int total = 0;
         total += this.findHorizontalMatch();
-        total += this.findVerticalMatch();
+//        total += this.findVerticalMatch();
         
         // Returns the total number of pieces destroyed
         return total;
@@ -252,23 +251,67 @@ public class Game extends TMGE {
 
     public boolean isTherePiecesToDestroy(){
         // TODO: true if there are pieces to destroy
-        return true;
+        return false;
     }
 
     public void shiftPiecesDown(){
-        // TODO: Shift all pieces down
+        for(int col = 0; col < COLUMNS; ++col){
+            // Create Arraylist with current column
+            ArrayList<Tile> tiles = new ArrayList<>();
+            for(int row = 0; row < ROWS; ++row) {
+                Tile t = this.getGameBoard().get(row).get(col);
+                tiles.add(new Tile(t));
+            }
+
+            // Remove all null items in the array
+            for(int i = tiles.size() - 1; i >= 0; --i){
+                if(tiles.get(i).getOccupied() == null){
+                    tiles.remove(i);
+                }
+            }
+
+            ArrayList<ArrayList<Tile>> tmpGameBoard = this.getGameBoard();
+            int tileIndex = tiles.size() -1;
+            // Map back
+            for(int row = ROWS - 1; row >= 0; --row){
+                if(tileIndex >= 0){
+                    tmpGameBoard.get(row).get(col).setOccupied(new TilePiece(tiles.get(tileIndex--).getOccupied().getPieceType()));
+                } else{
+                    tmpGameBoard.get(row).get(col).setOccupied(null);
+                }
+            }
+        }
     }
 
     public void fillEmptyPieces(){
-        // TODO: Fill in empty pieces with
+        ArrayList<ArrayList<Tile>> board = this.getGameBoard();
+        for(int row = 0; row < ROWS; ++row){
+            for(int col = 0; col < COLUMNS; ++col){
+                Tile t = board.get(row).get(col);
+                if(t.getOccupied() == null){
+                    int pieceTypeIndex = (int)(Math.random() * this.tilePieceTypes.size());
+                    t.setOccupied(new TilePiece(this.tilePieceTypes.get(pieceTypeIndex)));
+                }
+            }
+        }
     }
 
     public int destroyShiftFillUntilNoDestroysAvailable(){
         int total = 0;
-        while(this.isTherePiecesToDestroy()){
-            total += this.destroyMatches();
+        boolean shouldLoop = true;
+        while(shouldLoop){
+            int loopTotal = 0;
+            loopTotal += this.findHorizontalMatch();
             this.shiftPiecesDown();
             this.fillEmptyPieces();
+            loopTotal += this.findVerticalMatch();
+            this.shiftPiecesDown();
+            this.fillEmptyPieces();
+            if(loopTotal == 0){
+                shouldLoop = false;
+            } else{
+                total += loopTotal;
+            }
         }
         return total;
     }
