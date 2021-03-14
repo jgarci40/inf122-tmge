@@ -40,6 +40,10 @@ public class Board {
         return numOfRows;
     }
 
+    public ArrayList<String> getTilePieceSet() {
+        return tilePieceSet;
+    }
+
     public void setBoard(ArrayList<ArrayList<Tile>> board) {
         this.board = board;
     }
@@ -58,10 +62,10 @@ public class Board {
     }
 
     public void destroy(){
-        this.destroyBehavior.destroy(this.board);
+        this.destroyBehavior.destroy(this);
     }
 
     public void postDestroy(){
-        this.postDestroy.postDestroy(this.board);
+        this.postDestroy.postDestroy(this);
     }
 }
