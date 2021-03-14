@@ -10,6 +10,13 @@ public class Tile {
         col = c;
     }
 
+    // Copy Constructor
+    public Tile(Tile t){
+        this.row = t.getRow();
+        this.col = t.getCol();
+        this.occupied = t.getOccupied() != null ? new TilePiece(t.getOccupied().getPieceType()) : null ;
+    }
+
     public int getRow() {
         return row;
     }
