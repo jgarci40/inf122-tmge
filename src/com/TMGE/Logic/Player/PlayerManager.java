@@ -1,4 +1,4 @@
-package com.TMGE.Logic;
+package com.TMGE.Logic.Player;
 
 import java.util.ArrayList;
 

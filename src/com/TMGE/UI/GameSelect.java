@@ -1,13 +1,13 @@
 package com.TMGE.UI;
 
 import com.TMGE.Games.Bejeweled.Bejeweled;
-import com.TMGE.Logic.PlayerManager;
+import com.TMGE.Games.Columns.Columns;
 
 import java.util.Scanner;
 
 public class GameSelect {
 
-    public static void GameSelect(PlayerManager pm){
+    public void run(){
         Scanner sc = new Scanner(System.in);
         boolean shouldStop = false;
         int gameOption;
@@ -19,13 +19,14 @@ public class GameSelect {
 
             switch(gameOption){
                 case 0:
-                    shouldStop = true;
                     return;
                 case 1:
-                    Bejeweled.start();
+                    Bejeweled bj = new Bejeweled();
+                    // TODO: throw in UI here
                     break;
                 case 2:
-                    // Start Game here
+                    Columns columns = new Columns();
+                    // TODO: throw in UI here
                     break;
                 default:
                     System.out.println("Invalid game options. Please try again");
@@ -36,6 +37,6 @@ public class GameSelect {
         System.out.println("Game Options:");
         System.out.println("\t0: exit");
         System.out.println("\t1: Bejeweled");
-        System.out.println("\t2: y");
+        System.out.println("\t2: Columns");
     }
 }
