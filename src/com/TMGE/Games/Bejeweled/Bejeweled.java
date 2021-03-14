@@ -15,12 +15,12 @@ public class Bejeweled extends TMGE {
         super("Bejeweled", 5, 5, new FileRandomBoardInit(), new ArrayList<>(), new VerticalHorizontalDestroyBehavior(), new GravityShiftAndFillRandom());
     }
 
-    static Bejeweled getInstance(){
+    public static Bejeweled getInstance(){
         if(bj == null) bj = new Bejeweled();
         return bj;
     }
 
-    static Bejeweled refreshGame(){
+    public static Bejeweled refreshGame(){
         bj = new Bejeweled();
         return bj;
     }

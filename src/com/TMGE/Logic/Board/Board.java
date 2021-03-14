@@ -44,6 +44,10 @@ public class Board {
         return tilePieceSet;
     }
 
+    public boolean isInitialized() {
+        return isInitialized;
+    }
+
     public void setBoard(ArrayList<ArrayList<Tile>> board) {
         this.board = board;
     }

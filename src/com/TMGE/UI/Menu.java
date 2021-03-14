@@ -16,10 +16,13 @@ public class Menu {
                     this.printAbout();
                     return;
                 case 1:
-                    GameSelect gs = new GameSelect();
-                    gs.run();
+                    System.out.println("Loading Learn More UI....");
+                    this.printAbout();
                     break;
                 case 2:
+                    System.out.println("Loading Selecting Game UI....");
+                    GameSelect gs = new GameSelect();
+                    gs.run();
                     break;
                 default:
                     System.out.println("Invalid input please try again");
@@ -36,6 +39,7 @@ public class Menu {
 
     private void printAbout(){
         // TOOD: Make something about the authors or something
+        System.out.println("About....");
     }
 
 }

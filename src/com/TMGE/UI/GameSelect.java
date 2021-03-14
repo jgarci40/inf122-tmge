@@ -1,6 +1,8 @@
 package com.TMGE.UI;
 
 import com.TMGE.Games.Bejeweled.Bejeweled;
+import com.TMGE.Games.Bejeweled.UI.BejeweledMenu;
+import com.TMGE.Games.Bejeweled.UI.GamePlay;
 import com.TMGE.Games.Columns.Columns;
 
 import java.util.Scanner;
@@ -21,8 +23,8 @@ public class GameSelect {
                 case 0:
                     return;
                 case 1:
-                    Bejeweled bj = new Bejeweled();
-                    // TODO: throw in UI here
+                    BejeweledMenu bejeweledMenu = new BejeweledMenu();
+                    bejeweledMenu.run();
                     break;
                 case 2:
                     Columns columns = new Columns();
