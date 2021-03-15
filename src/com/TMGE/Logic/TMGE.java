@@ -3,6 +3,7 @@ package com.TMGE.Logic;
 import com.TMGE.Logic.Board.Board;
 import com.TMGE.Logic.Board.Init.BoardInit;
 import com.TMGE.Logic.Board.DestroyBehavior.DestoyBehavior;
+import com.TMGE.Logic.Board.DisplayBehavior.DisplayBehavior;
 import com.TMGE.Logic.Board.PostDestroy.PostDestroy;
 import com.TMGE.Logic.Player.PlayerManager;
 
@@ -13,10 +14,10 @@ public abstract class TMGE {
     private String gameName;
     private PlayerManager pm;
 
-    public TMGE(String gameName, int numOfRows, int numOfColumns, BoardInit bi, ArrayList<String> tileset, DestoyBehavior db, PostDestroy pd) {
+    public TMGE(String gameName, int numOfRows, int numOfColumns, BoardInit bi, ArrayList<String> tileset, DestoyBehavior db, PostDestroy pd, DisplayBehavior dispBeh) {
         this.gameName = gameName;
         this.pm = new PlayerManager();
-        this.board = new Board(numOfColumns, numOfRows, bi, tileset, db, pd);
+        this.board = new Board(numOfColumns, numOfRows, bi, tileset, db, pd, dispBeh);
         this.board.init();
     }
 

@@ -75,6 +75,8 @@ public class BejeweledMenu {
 
         boolean shouldLoop = true;
         while(shouldLoop){
+            // 1) Display board
+            this.bejeweled.getBoard().display();
             // 1) Make move
             this.makeMove();
             // 2) Calculate points from move
@@ -100,6 +102,4 @@ public class BejeweledMenu {
     private void makeMove(){
         // TODO: implement
     }
-
-
 }

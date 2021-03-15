@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class BlankBoardInit implements BoardInit {
 
     @Override
-    public ArrayList<ArrayList<Tile>> initialize(int rows, int cols) {
+    public ArrayList<ArrayList<Tile>> initialize(int rows, int cols, ArrayList<String> tilePieceSet) {
         return null;
     }
 }

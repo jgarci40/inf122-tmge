@@ -1,18 +1,21 @@
 package com.TMGE.Games.Bejeweled;
 
 import com.TMGE.Logic.Board.DestroyBehavior.VerticalHorizontalDestroyBehavior;
+import com.TMGE.Logic.Board.DisplayBehavior.DisplayFullBoard;
 import com.TMGE.Logic.Board.Init.FileRandomBoardInit;
 import com.TMGE.Logic.Board.PostDestroy.GravityShiftAndFillRandom;
+import com.TMGE.Logic.Tile.Tile;
 import com.TMGE.Logic.TMGE;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Bejeweled extends TMGE {
 
     static Bejeweled bj;
 
-    public Bejeweled() {
-        super("Bejeweled", 5, 5, new FileRandomBoardInit(), new ArrayList<>(), new VerticalHorizontalDestroyBehavior(), new GravityShiftAndFillRandom());
+    private Bejeweled() {
+        super("Bejeweled", 5, 5, new FileRandomBoardInit(), new ArrayList<String>(Arrays.asList("!","@","$","&")), new VerticalHorizontalDestroyBehavior(), new GravityShiftAndFillRandom(), new DisplayFullBoard());
     }
 
     public static Bejeweled getInstance(){
@@ -26,7 +29,11 @@ public class Bejeweled extends TMGE {
     }
 
     private void swapPieces(int fromRow, int fromCol, int toRow, int toCol){
-        // TODO: implement
+        // swap tiles on the bejeweled board
+        Tile from_tile  = bj.getBoard().getBoard().get(fromRow).get(fromCol);
+        Tile to_tile    = bj.getBoard().getBoard().get(toRow).get(toCol);
+        bj.getBoard().getBoard().get(fromRow).set(fromCol, to_tile);
+        bj.getBoard().getBoard().get(toRow).set(toCol, from_tile);
     }
 
     private void postSwap(){
