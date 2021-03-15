@@ -1,4 +1,4 @@
-package com.TMGE.Logic;
+package com.TMGE.Logic.Player;
 
 public class Player {
     private String name;
