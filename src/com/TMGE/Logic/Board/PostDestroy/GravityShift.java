@@ -17,7 +17,12 @@ public class GravityShift implements PostDestroy{
             ArrayList<Tile> tiles = new ArrayList<>();
             for(int row = 0; row < ROWS; ++row) {
                 Tile t = board.get(row).get(col);
-                tiles.add(new Tile(t.getTilePiece()));
+                // handle null Tile
+                if (t == null) {
+                    tiles.add(null);
+                } else {
+                    tiles.add(new Tile(t.getTilePiece()));
+                }
             }
 
             // Remove all null items in the array

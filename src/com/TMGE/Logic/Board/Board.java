@@ -68,8 +68,8 @@ public class Board {
         this.isInitialized = true;
     }
 
-    public void destroy(){
-        this.destroyBehavior.destroy(this);
+    public int destroy(){
+        return this.destroyBehavior.destroy(this);
     }
 
     public void postDestroy(){

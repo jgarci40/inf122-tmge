@@ -17,8 +17,13 @@ public class VerticalHorizontalDestroyBehavior implements DestoyBehavior {
             int end_col         = 0;
 
             for (int col = 0; col < board.getNumOfColumns(); col++) {
-                // current tile can be null
+                // Handle null Tiles
                 Tile current_tile   = board.getBoard().get(row).get(col);
+                if (current_tile == null) {
+                    piece_type  = null;
+                    num_matches = 0;
+                    continue;   // go to next row in same column
+                }
                 String current_type = current_tile.getTilePiece();
 
                 if (current_type.equals(piece_type)) {num_matches++;}
@@ -51,8 +56,13 @@ public class VerticalHorizontalDestroyBehavior implements DestoyBehavior {
             int end_row         = 0; 
 
             for (int row = 0; row < board.getNumOfRows(); row++) {
-                // current tile can be null
+                // Handle null Tiles
                 Tile current_tile   = board.getBoard().get(row).get(col);
+                if (current_tile == null) {
+                    piece_type  = null;
+                    num_matches = 0;
+                    continue;   // go to next row in same column
+                }
                 String current_type = current_tile.getTilePiece();
 
                 if (current_type.equals(piece_type)) {num_matches++;}
