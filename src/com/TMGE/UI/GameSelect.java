@@ -4,6 +4,7 @@ import com.TMGE.Games.Bejeweled.Bejeweled;
 import com.TMGE.Games.Bejeweled.UI.BejeweledMenu;
 import com.TMGE.Games.Bejeweled.UI.GamePlay;
 import com.TMGE.Games.Columns.Columns;
+import com.TMGE.Games.Columns.UI.ColumnsMenu;
 
 import java.util.Scanner;
 
@@ -28,7 +29,8 @@ public class GameSelect {
                     break;
                 case 2:
                     Columns columns = new Columns();
-                    // TODO: throw in UI here
+                    ColumnsMenu columnsMenu = new ColumnsMenu();
+                    columnsMenu.run();
                     break;
                 default:
                     System.out.println("Invalid game options. Please try again");
