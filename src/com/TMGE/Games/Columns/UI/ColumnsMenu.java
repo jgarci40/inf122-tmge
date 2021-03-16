@@ -55,9 +55,12 @@ public class ColumnsMenu {
         boolean shouldLoop = true;
         while(shouldLoop) {
             this.columns.getBoard().display();
+            System.out.println("To create a faller enter in following format: F column# X Y Z");
             cmd = obj.nextLine();
-            if (cmd.equals(">")) {
-                System. out.println("right >>>>>");
+            if (cmd.startsWith("F")) {
+                String[] cmdArray = cmd.split(" ");
+                this.columns.spawnFaller(cmdArray);
+
             }
             else if (cmd.equals("<")) {
                 System. out.println("Left <<<<<<");
