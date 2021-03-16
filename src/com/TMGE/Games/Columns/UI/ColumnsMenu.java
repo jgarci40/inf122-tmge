@@ -59,7 +59,14 @@ public class ColumnsMenu {
             cmd = obj.nextLine();
             if (cmd.startsWith("F")) {
                 String[] cmdArray = cmd.split(" ");
-                this.columns.spawnFaller(cmdArray);
+                boolean found = this.columns.spawnFaller(cmdArray);
+                //this.columns.postSpawn();
+                if (found == false)
+                {
+                    this.columns.getBoard().display();
+                    System.out.println("Whole piece doesn't fit in selected column! GAME OVER");
+                    break;
+                }
 
             }
             else if (cmd.equals("<")) {
