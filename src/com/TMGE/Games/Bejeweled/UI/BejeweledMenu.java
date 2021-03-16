@@ -77,14 +77,15 @@ public class BejeweledMenu {
         while(shouldLoop){
             // 1) Display board
             this.bejeweled.getBoard().display();
-            // 1) Make move
+            // 2) Make move
             this.makeMove();
-            // 2) Calculate points from move
-            // 3) Destroy
+            
+            // 4) Destroy
             this.bejeweled.getBoard().destroy();
-            // 3) Post Destroy
+            // 5) Calculate points from move
+            // 6) Post Destroy
             this.bejeweled.getBoard().postDestroy();
-            // 4) Check time -> continue or end game and switch players
+            // 7) Check time -> continue or end game and switch players
 
 
             shouldLoop = false;

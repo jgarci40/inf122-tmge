@@ -1,8 +1,6 @@
 package com.TMGE.UI;
 
-import com.TMGE.Games.Bejeweled.Bejeweled;
 import com.TMGE.Games.Bejeweled.UI.BejeweledMenu;
-import com.TMGE.Games.Bejeweled.UI.GamePlay;
 import com.TMGE.Games.Columns.Columns;
 
 import java.util.Scanner;
