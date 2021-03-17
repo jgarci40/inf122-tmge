@@ -33,9 +33,6 @@ public class ColumnsMenu {
                     System.out.println("Game rules are ");
                     break;
                 case 2:
-                    this.addPlayers();
-                    break;
-                case 3:
                     System.out.println("Start Game is selected");
                     this.startGame();
                     break;
@@ -45,39 +42,31 @@ public class ColumnsMenu {
             }
         }
     }
-    private void addPlayers(){
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the number of players: ");
-        int numberOfPlayers = sc.nextInt();
-        for(int i = 0; i < numberOfPlayers; ++i){
-            this.columns.getPm().addPlayer(String.format("Player %d", numberOfPlayers + 1));
-        }
-        this.columns.getPm().printPlayersInfo();
-        System.out.println();
-    }
 
 
     private void displayOptions(){
         System.out.println("Menu Options: ");
         System.out.println("\t0: Exit");
         System.out.println("\t1: Game rules");
-        System.out.println("\t2: Add Player");
-        System.out.println("\t3: Start Game");
+        System.out.println("\t2: Start Game");
     }
 
     private void startGame() {
+        int player1 = 0;
+        int player2 = 0;
         this.columns.getBoard().init();
         Scanner obj = new Scanner(System.in);
         String cmd = " ";
         boolean shouldLoop = true;
+        System.out.println("Player 1 your turn to play a game of Columns");
+        System.out.println();
         while(shouldLoop) {
             this.columns.getBoard().display();
             System.out.println("Select the following commands: Q: quit, F: generate faller");
             cmd = obj.nextLine();
             if (cmd.toLowerCase().startsWith("f")) {
-                //String[] cmdArray = cmd.split(" ");
                 boolean found = this.columns.generateColors();
-                if (found == false)
+                if (!found)
                 {
                     this.columns.getBoard().display();
                     System.out.println("Whole piece doesn't fit in selected column! GAME OVER");
@@ -86,13 +75,10 @@ public class ColumnsMenu {
                 else{
                     //int points = this.columns.postSpawn();
                     this.columns.getBoard().display();
-                    this.columns.getBoard().destroy();
+                    player1 += this.columns.getBoard().destroy();
                     this.columns.getBoard().postDestroy();
                 }
 
-            }
-            else if (cmd.equals("<")) {
-                System.out.println("Left <<<<<<");
             }
             else if (cmd.toLowerCase().equals("q")) {
                 shouldLoop = false;
@@ -101,6 +87,57 @@ public class ColumnsMenu {
                 System.out.println("Invalid command! Try again");
                 continue;
             }
+        }
+        System.out.println("Player1 score: " + player1);
+
+
+        // player2
+
+        System.out.println("Player 2 your turn to play a game of Columns");
+        System.out.println();
+        this.columns.getBoard().init();
+        while(true) {
+            this.columns.getBoard().display();
+            System.out.println("Select the following commands: Q: quit, F: generate faller");
+            cmd = obj.nextLine();
+            if (cmd.toLowerCase().startsWith("f")) {
+                boolean found = this.columns.generateColors();
+                if (!found)
+                {
+                    this.columns.getBoard().display();
+                    System.out.println("Whole piece doesn't fit in selected column! GAME OVER");
+                    break;
+                }
+                else{
+                    //int points = this.columns.postSpawn();
+                    this.columns.getBoard().display();
+                    player2 += this.columns.getBoard().destroy();
+                    this.columns.getBoard().postDestroy();
+                }
+
+            }
+            else if (cmd.toLowerCase().equals("q")) {
+                break;
+            }
+            else {
+                System.out.println("Invalid command! Try again");
+                continue;
+            }
+        }
+        System.out.println("Player1 score: " + player1);
+        System.out.println("Player2 score: " + player2);
+
+        if (player1 > player2)
+        {
+            System.out.println("Player 1 wins!");
+        }
+        else if (player2 > player1)
+        {
+            System.out.println("Player 2 wins!");
+        }
+        else
+        {
+            System.out.println("Player 1 and player 2 tied!");
         }
     }
 }

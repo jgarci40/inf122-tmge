@@ -131,6 +131,12 @@ public class VerticalHorizontalEmptyDestroy implements DestoyBehavior {
                 }
             }
         }
+        if (totalPoints > 0)
+        {
+            System.out.println();
+            System.out.println("You got a match! +" + totalPoints + " points!");
+
+        }
         return totalPoints;
     }
 }
