@@ -77,7 +77,6 @@ public class ColumnsMenu {
             if (cmd.startsWith("F")) {
                 String[] cmdArray = cmd.split(" ");
                 boolean found = this.columns.spawnFaller(cmdArray);
-                this.columns.postSpawn();
                 if (found == false)
                 {
                     this.columns.getBoard().display();
@@ -85,7 +84,8 @@ public class ColumnsMenu {
                     break;
                 }
                 else{
-                    //nt points = this.columns.postSpawn();
+                    //int points = this.columns.postSpawn();
+                    this.columns.getBoard().display();
                     this.columns.getBoard().destroy();
                     this.columns.getBoard().postDestroy();
                 }
