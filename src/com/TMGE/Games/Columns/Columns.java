@@ -11,13 +11,15 @@ import com.TMGE.Logic.Tile.Tile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Random;
 
 public class Columns extends TMGE {
 
     static Columns c;
 
     public Columns() {
-        super("Columns", 5, 5, new BlankBoardInit(), new ArrayList<String>(Arrays.asList("S", "T", "V", "W", "X", "Y", "Z")), new VerticalHorizontalEmptyDestroy(), new GravityShift(), new DisplayFullBoard());
+        super("Columns", 7, 7, new BlankBoardInit(), new ArrayList<String>(Arrays.asList("S", "T", "V", "W", "X", "Y", "Z")), new VerticalHorizontalEmptyDestroy(), new GravityShift(), new DisplayFullBoard());
     }
 
     public static Columns getInstance(){
@@ -28,6 +30,52 @@ public class Columns extends TMGE {
     public static Columns refreshGame(){
         c =  new Columns();
         return c;
+    }
+
+    public String[] rotateColors(String one, String two, String three)
+    {
+        String[] colors = {one, two, three};
+        int i;
+        String temp;
+        temp = colors[0];
+        for (i = 0; i < 3 - 1; i++)
+            colors[i] = colors[i + 1];
+        colors[i] = temp;
+
+        return colors;
+
+    }
+
+    public boolean generateColors()
+    {
+        String[] colors = {"S", "T", "V", "W", "X", "Y", "Z"};
+        Random rand = new Random();
+        int upperBound = 7;
+        String one = colors[rand.nextInt(upperBound)];
+        String two = colors[rand.nextInt(upperBound)];
+        String three = colors[rand.nextInt(upperBound)];
+
+        System.out.println("Your generated faller from top to bottom is: " + three + " " + two + " " + one);
+        Scanner obj = new Scanner(System.in);
+        String cmd = "";
+        System.out.println("Would you like to R: rotate faller or P: place on board?");
+        cmd = obj.nextLine();
+        while (cmd.toLowerCase().startsWith("r")){
+            String[] newFaller = rotateColors(one, two, three);
+            three = newFaller[2];
+            two = newFaller[1];
+            one = newFaller[0];
+            System.out.println("Your rotated faller from top to bottom is: " + newFaller[2] + " " + newFaller[1] + " " + newFaller[0]);
+            System.out.println("Would you like to R: rotate faller or P: place on board?");
+            cmd = obj.nextLine();
+            if (cmd.toLowerCase().startsWith("p")){
+                break;
+            }
+        }
+        System.out.println("What column # would you like to place faller in?");
+        cmd = obj.nextLine();
+        String[] faller = {"F", cmd, one, two, three};
+        return spawnFaller(faller);
     }
 
     public boolean spawnFaller(String[] commandArray){
