@@ -35,7 +35,7 @@ public class Columns extends TMGE {
         Tile t3 = new Tile(commandArray[4]);
         boolean found = false;
         for (int i = getBoard().getNumOfRows()-1; i >= 0; i--){
-            if (c.getBoard().getBoard().get(i).get(column).getTilePiece().equals(" ")){
+            if (c.getBoard().getBoard().get(i).get(column) == null){
                 try {
                     c.getBoard().getBoard().get(i).set(column, t1);
                     c.getBoard().getBoard().get(i - 1).set(column, t2);

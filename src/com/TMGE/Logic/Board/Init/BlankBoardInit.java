@@ -14,7 +14,7 @@ public class BlankBoardInit implements BoardInit {
             board.add(new ArrayList<Tile>());
             for (int col = 0; col < cols; col++)
             {
-                board.get(row).add(new Tile(" "));
+                board.get(row).add(null);
             }
 
         }

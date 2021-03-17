@@ -60,12 +60,15 @@ public class ColumnsMenu {
             if (cmd.startsWith("F")) {
                 String[] cmdArray = cmd.split(" ");
                 boolean found = this.columns.spawnFaller(cmdArray);
-                //this.columns.postSpawn();
+                this.columns.postSpawn();
                 if (found == false)
                 {
                     this.columns.getBoard().display();
                     System.out.println("Whole piece doesn't fit in selected column! GAME OVER");
                     break;
+                }
+                else{
+                    this.columns.postSpawn();
                 }
 
             }
