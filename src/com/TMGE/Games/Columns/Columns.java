@@ -105,12 +105,5 @@ public class Columns extends TMGE {
         return found;
     }
 
-
-
-//    public int postSpawn(){
-//        int points = this.c.getBoard().destroy();
-//        this.c.getBoard().postDestroy();
-//        return points;
-//    }
     
 }
