@@ -72,11 +72,11 @@ public class ColumnsMenu {
         boolean shouldLoop = true;
         while(shouldLoop) {
             this.columns.getBoard().display();
-            System.out.println("To create a faller enter in following format: F column# X Y Z");
+            System.out.println("Select the following commands: Q: quit, F: generate faller");
             cmd = obj.nextLine();
-            if (cmd.startsWith("F")) {
-                String[] cmdArray = cmd.split(" ");
-                boolean found = this.columns.spawnFaller(cmdArray);
+            if (cmd.toLowerCase().startsWith("f")) {
+                //String[] cmdArray = cmd.split(" ");
+                boolean found = this.columns.generateColors();
                 if (found == false)
                 {
                     this.columns.getBoard().display();
@@ -92,13 +92,14 @@ public class ColumnsMenu {
 
             }
             else if (cmd.equals("<")) {
-                System. out.println("Left <<<<<<");
+                System.out.println("Left <<<<<<");
             }
-            else if (cmd.equals("q")) {
+            else if (cmd.toLowerCase().equals("q")) {
                 shouldLoop = false;
             }
             else {
-                System. out.println(cmd);
+                System.out.println("Invalid command! Try again");
+                continue;
             }
         }
     }
