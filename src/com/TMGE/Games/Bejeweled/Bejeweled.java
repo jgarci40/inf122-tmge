@@ -4,6 +4,7 @@ import com.TMGE.Logic.Board.DestroyBehavior.VerticalHorizontalDestroyBehavior;
 import com.TMGE.Logic.Board.DisplayBehavior.DisplayFullBoard;
 import com.TMGE.Logic.Board.Init.FileRandomBoardInit;
 import com.TMGE.Logic.Board.PostDestroy.GravityShiftAndFillRandom;
+import com.TMGE.Logic.Player.PlayerManager;
 import com.TMGE.Logic.Tile.Tile;
 import com.TMGE.Logic.Coords;
 import com.TMGE.Logic.TMGE;
@@ -25,7 +26,9 @@ public class Bejeweled extends TMGE {
     }
 
     public static Bejeweled refreshGame(){
+        PlayerManager pm = bj.getPm();
         bj = new Bejeweled();
+        bj.setPm(pm);
         return bj;
     }
 
@@ -43,15 +46,5 @@ public class Bejeweled extends TMGE {
         Tile to_tile    = bj.getBoard().getBoard().get(to.row).get(to.col);
         bj.getBoard().getBoard().get(from.row).set(from.col, to_tile);
         bj.getBoard().getBoard().get(to.row).set(to.col, from_tile);
-    }
-
-    private void postSwap(){
-        this.getBoard().destroy();
-        this.getBoard().postDestroy();
-    }
-
-    public void takeMove(int fromRow, int fromCol, int toRow, int toCol){
-        this.swapPieces(fromRow, fromCol, toRow, toCol);
-        this.postSwap();
     }
 }

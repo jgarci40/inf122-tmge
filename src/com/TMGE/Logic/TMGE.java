@@ -32,4 +32,6 @@ public abstract class TMGE {
     public PlayerManager getPm() {
         return pm;
     }
+
+    public void setPm(PlayerManager pm) {this.pm = pm;}
 }

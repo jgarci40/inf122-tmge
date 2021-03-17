@@ -31,14 +31,16 @@ public class VerticalHorizontalDestroyBehavior implements DestoyBehavior {
                     if (num_matches >= 3) {
                         if (!current_type.equals(piece_type)) {
                             end_col = col - 1;
+                            for (int c = col-num_matches; c <= end_col; c++) {
+                                board.getBoard().get(row).set(c, null);     // set each matching tile to null, effectively destroying them
+                                totalPoints++;
+                            }
                         } else {
                             end_col = col;
-                        }
-
-                        // iterate over row from beginning col to end col, removing the matches
-                        for (int c = col-num_matches; c <= end_col; c++) {
-                            board.getBoard().get(row).set(c, null);     // set each matching tile to null, effectively destroying them
-                            totalPoints++;
+                            for (int c = col-num_matches+1; c <= end_col; c++) {
+                                board.getBoard().get(row).set(c, null);     // set each matching tile to null, effectively destroying them
+                                totalPoints++;
+                            }
                         }
                     }
                     piece_type  = current_type;      // set piece type to current tile type to begin checking for new matches
@@ -70,14 +72,17 @@ public class VerticalHorizontalDestroyBehavior implements DestoyBehavior {
                     if (num_matches >= 3) {
                         if (!current_type.equals(piece_type)) {
                             end_row = row - 1;
+                            // iterate over column from beginning row to end row, removing the matches
+                            for (int r = row-num_matches; r <= end_row; r++) {
+                                board.getBoard().get(r).set(col, null);     // set each matching tile to null, effectively destroying them
+                                totalPoints++;
+                            }
                         } else {
                             end_row = row;
-                        }
-
-                        // iterate over column from beginning row to end row, removing the matches
-                        for (int r = row-num_matches; r <= end_row; r++) {
-                            board.getBoard().get(r).set(col, null);     // set each matching tile to null, effectively destroying them
-                            totalPoints++;
+                            for (int r = row-num_matches+1; r <= end_row; r++) {
+                                board.getBoard().get(r).set(col, null);     // set each matching tile to null, effectively destroying them
+                                totalPoints++;
+                            }
                         }
                     }
                     piece_type  = current_type;      // set piece type to current tile type to begin checking for new matches

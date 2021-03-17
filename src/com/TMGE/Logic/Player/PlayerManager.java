@@ -1,19 +1,23 @@
 package com.TMGE.Logic.Player;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PlayerManager {
     private ArrayList<Player> players;
     private int playerTurnIndex;
+    private HashMap<String, Player> playerMap;
 
     public PlayerManager() {
         this.players = new ArrayList<>();
         this.playerTurnIndex = 0;
+        this.playerMap = new HashMap<String, Player>();
     }
 
     public PlayerManager(ArrayList<Player> players, int playerTurnIndex) {
         this.players = players;
         this.playerTurnIndex = playerTurnIndex;
+        this.playerMap = new HashMap<String, Player>();
     }
 
     public ArrayList<Player> getPlayers() {
@@ -69,11 +73,12 @@ public class PlayerManager {
     public void addPlayer(String name) {
         Player p = new Player(name);
         players.add(p);
+        playerMap.put(name, p);
     }
 
     public void printPlayersInfo() {
         for (Player p : players) {
-            System.out.println(p.getName() + ": " + Integer.toString(p.getPoints()));
+            System.out.println(p.getName() + "'s points: " + Integer.toString(p.getPoints()));
         }
     }
 

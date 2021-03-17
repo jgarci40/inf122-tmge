@@ -38,8 +38,7 @@ public class Menu {
     }
 
     private void printAbout(){
-        // TOOD: Make something about the authors or something
-        System.out.println("About....");
+        System.out.println("INF 122 TMGE implementing simplified versions of Bejeweled and Columns");
     }
 
 }
