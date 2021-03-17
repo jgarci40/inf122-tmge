@@ -30,7 +30,7 @@ public class ColumnsMenu {
                     System.out.println("Game exited  " + this.columns.getGameName());
                     return;
                 case 1:
-                    System.out.println("Game rules are ");
+                    this.displayGameRules();
                     break;
                 case 2:
                     System.out.println("Start Game is selected");
@@ -139,6 +139,18 @@ public class ColumnsMenu {
         {
             System.out.println("Player 1 and player 2 tied!");
         }
+    }
+
+    private void displayGameRules(){
+        System.out.println("welcome to our implementation of Columns");
+        System.out.println("If you're unfamiliar with the game, Columns is a Tile-matching game where players can generate");
+        System.out.println("a faller which is a column of three pieces. The player can choose to rotate the faller's ");
+        System.out.println("pieces then select what column to place the faller in, in order to get matches ");
+        System.out.println();
+        System.out.println("For our implementation, you can create horizontal or vertical matches.");
+        System.out.println("Horizontal matches are cleared first, followed by vertical matches");
+        System.out.println("If your piece hits the top of the board, you lose!");
+        System.out.println("Player1 goes first then Player 2. The player with the higher score wins!");
     }
 }
 
