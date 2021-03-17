@@ -57,9 +57,10 @@ public class Columns extends TMGE {
 
 
 
-    public void postSpawn(){
-        this.getBoard().destroy();
-        this.getBoard().postDestroy();
+    public int postSpawn(){
+        int points = this.c.getBoard().destroy();
+        this.c.getBoard().postDestroy();
+        return points;
     }
     
 }
