@@ -1,6 +1,8 @@
 package com.TMGE.Games.Columns.UI;
 
 import com.TMGE.Games.Columns.Columns;
+import java.time.Duration;
+import java.time.Instant;
 
 import java.util.Scanner;
 
@@ -31,6 +33,9 @@ public class ColumnsMenu {
                     System.out.println("Game rules are ");
                     break;
                 case 2:
+                    this.addPlayers();
+                    break;
+                case 3:
                     System.out.println("Start Game is selected");
                     this.startGame();
                     break;
@@ -40,12 +45,24 @@ public class ColumnsMenu {
             }
         }
     }
+    private void addPlayers(){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of players: ");
+        int numberOfPlayers = sc.nextInt();
+        for(int i = 0; i < numberOfPlayers; ++i){
+            this.columns.getPm().addPlayer(String.format("Player %d", numberOfPlayers + 1));
+        }
+        this.columns.getPm().printPlayersInfo();
+        System.out.println();
+    }
+
 
     private void displayOptions(){
         System.out.println("Menu Options: ");
         System.out.println("\t0: Exit");
         System.out.println("\t1: Game rules");
-        System.out.println("\t2: Start Game");
+        System.out.println("\t2: Add Player");
+        System.out.println("\t3: Start Game");
     }
 
     private void startGame() {
@@ -60,12 +77,17 @@ public class ColumnsMenu {
             if (cmd.startsWith("F")) {
                 String[] cmdArray = cmd.split(" ");
                 boolean found = this.columns.spawnFaller(cmdArray);
-                //this.columns.postSpawn();
                 if (found == false)
                 {
                     this.columns.getBoard().display();
                     System.out.println("Whole piece doesn't fit in selected column! GAME OVER");
                     break;
+                }
+                else{
+                    //int points = this.columns.postSpawn();
+                    this.columns.getBoard().display();
+                    this.columns.getBoard().destroy();
+                    this.columns.getBoard().postDestroy();
                 }
 
             }

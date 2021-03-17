@@ -1,6 +1,8 @@
 package com.TMGE.Games.Columns;
 
+
 import com.TMGE.Logic.Board.DestroyBehavior.VerticalHorizontalDestroyBehavior;
+import com.TMGE.Logic.Board.DestroyBehavior.VerticalHorizontalEmptyDestroy;
 import com.TMGE.Logic.Board.DisplayBehavior.DisplayFullBoard;
 import com.TMGE.Logic.Board.Init.BlankBoardInit;
 import com.TMGE.Logic.Board.PostDestroy.GravityShift;
@@ -15,7 +17,7 @@ public class Columns extends TMGE {
     static Columns c;
 
     public Columns() {
-        super("Columns", 5, 5, new BlankBoardInit(), new ArrayList<String>(Arrays.asList("S", "T", "V", "W", "X", "Y", "Z")), new VerticalHorizontalDestroyBehavior(), new GravityShift(), new DisplayFullBoard());
+        super("Columns", 5, 5, new BlankBoardInit(), new ArrayList<String>(Arrays.asList("S", "T", "V", "W", "X", "Y", "Z")), new VerticalHorizontalEmptyDestroy(), new GravityShift(), new DisplayFullBoard());
     }
 
     public static Columns getInstance(){
@@ -35,7 +37,7 @@ public class Columns extends TMGE {
         Tile t3 = new Tile(commandArray[4]);
         boolean found = false;
         for (int i = getBoard().getNumOfRows()-1; i >= 0; i--){
-            if (c.getBoard().getBoard().get(i).get(column).getTilePiece().equals(" ")){
+            if (c.getBoard().getBoard().get(i).get(column) == null){
                 try {
                     c.getBoard().getBoard().get(i).set(column, t1);
                     c.getBoard().getBoard().get(i - 1).set(column, t2);
@@ -57,9 +59,10 @@ public class Columns extends TMGE {
 
 
 
-    public void postSpawn(){
-        this.getBoard().destroy();
-        this.getBoard().postDestroy();
-    }
+//    public int postSpawn(){
+//        int points = this.c.getBoard().destroy();
+//        this.c.getBoard().postDestroy();
+//        return points;
+//    }
     
 }
