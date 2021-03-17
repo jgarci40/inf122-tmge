@@ -148,7 +148,7 @@ public class ColumnsMenu {
         System.out.println("pieces then select what column to place the faller in, in order to get matches ");
         System.out.println();
         System.out.println("For our implementation, you can create horizontal or vertical matches.");
-        System.out.println("Horizontal matches are cleared first, followed by vertical matches");
+        System.out.println("Horizontal matches are cleared first and are worth more points, followed by vertical matches");
         System.out.println("If your piece hits the top of the board, you lose!");
         System.out.println("Player1 goes first then Player 2. The player with the higher score wins!");
     }
