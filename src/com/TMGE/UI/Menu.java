@@ -40,5 +40,4 @@ public class Menu {
     private void printAbout(){
         System.out.println("INF 122 TMGE implementing simplified versions of Bejeweled and Columns");
     }
-
 }
