@@ -1,7 +1,8 @@
-package com.TMGE.Games.Columns.UI;
+package com.TMGE.GamesModule.src.main.java.com.Columns.UI;
 
-import com.TMGE.Games.Columns.Columns;
 import java.util.Scanner;
+
+import com.TMGE.GamesModule.src.main.java.com.Columns.Columns;
 
 public class ColumnsMenu {
     Columns columns;

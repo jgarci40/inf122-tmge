@@ -1,17 +1,17 @@
-package com.TMGE.Games.Columns;
+package com.TMGE.GamesModule.src.main.java.com.Columns;
 
-
-import com.TMGE.Logic.Board.DestroyBehavior.VerticalHorizontalEmptyDestroy;
-import com.TMGE.Logic.Board.DisplayBehavior.DisplayFullBoard;
-import com.TMGE.Logic.Board.Init.BlankBoardInit;
-import com.TMGE.Logic.Board.PostDestroy.GravityShift;
-import com.TMGE.Logic.TMGE;
-import com.TMGE.Logic.Tile.Tile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
+
+import com.TMGE.TMGEModule.src.main.java.com.TMGE.TMGE;
+import com.TMGE.TMGEModule.src.main.java.com.TMGE.BoardModule.src.main.java.com.Board.DestroyBehavior.VerticalHorizontalEmptyDestroy;
+import com.TMGE.TMGEModule.src.main.java.com.TMGE.BoardModule.src.main.java.com.Board.DisplayBehavior.DisplayFullBoard;
+import com.TMGE.TMGEModule.src.main.java.com.TMGE.BoardModule.src.main.java.com.Board.InitBehavior.BlankBoardInit;
+import com.TMGE.TMGEModule.src.main.java.com.TMGE.BoardModule.src.main.java.com.Board.PostDestroyBehavior.GravityShift;
+import com.TMGE.TMGEModule.src.main.java.com.TMGE.BoardModule.src.main.java.com.Board.Tile.Tile;
 
 public class Columns extends TMGE {
 
